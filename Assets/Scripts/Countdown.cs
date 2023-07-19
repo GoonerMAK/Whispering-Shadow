@@ -36,12 +36,12 @@ public class Countdown : MonoBehaviour
 
             if(evil)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
             }
 
             else
             {
-                int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 2;
+                int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
                 Debug.Log("Loading scene with index: " + nextSceneIndex);
                 SceneManager.LoadScene(nextSceneIndex);
             }
