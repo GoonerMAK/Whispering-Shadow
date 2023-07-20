@@ -851,6 +851,22 @@ MonoBehaviour:
   horizontalInput: 0
   verticalInput: 0
   speed: 10
+  facingRight: 0
+  movementFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  collisonOffset: 0.05
 --- !u!212 &126222148
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1056,12 +1072,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a1e3ebadb67fe4e98a7a793f52d692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPos: {x: 0, y: 0, z: 0}
-  spawnRangeX: 8
-  spawnRangeY: 4
-  startDelay: 2
-  spawnInterval: 3
-  villager: {fileID: 2464033829173020731, guid: f9bb224fa5c6fce46b8628be4d3305a8, type: 3}
+  spawnPos: {x: 0, y: 0}
+  goodVillagerPrefabs: []
+  badVillagerPrefabs: []
+  badVillagerIndex: 0
+  goodVillagerIndex: 0
+  goodVillagerCount: 0
+  badVillagerCount: 0
+  spawnCoordinates: []
+  spawnCoordinatesIndex: 0
 --- !u!4 &384855096
 Transform:
   m_ObjectHideFlags: 0

@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public Animator animator;
+
     public void Play()
     {
+        FadeOut();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -14,5 +17,10 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit");
+    }
+
+    public void FadeOut()
+    {
+        animator.SetTrigger("FadeOut");
     }
 }
