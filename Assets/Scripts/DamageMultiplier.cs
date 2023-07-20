@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillCounter : MonoBehaviour
+public class DamageMultiplier : MonoBehaviour
 {
-    [SerializeField] private int villagersKilled;
-    [SerializeField] private int enemiesKilled;
+    private int villagersKilled;
+    private int enemiesKilled;
+    [SerializeField] private int multiplier = 0;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void OnEnable()
     {
@@ -38,20 +44,13 @@ public class KillCounter : MonoBehaviour
             enemiesKilled++;
         }
 
-        Debug.Log("Villagers killed: " + villagersKilled + "    Enemies killed: " + enemiesKilled);
+        multiplier = enemiesKilled - villagersKilled;
     }
 
-    public bool IsPlayerEvil()
+    public int Multiplier()
     {
-        if(villagersKilled > enemiesKilled)
-        {
-            return true;
-        }
-
-        else 
-        {
-            return false;
-        }
+        return multiplier * 10;
     }
+
 
 }

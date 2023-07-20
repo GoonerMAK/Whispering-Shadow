@@ -8,13 +8,14 @@ public class PlayerFight : MonoBehaviour
     [SerializeField] public Animator animator;
     [SerializeField] private Transform attackPoint;
     private float attackRange = 12f;
-    [SerializeField] private float attackDamage = 30f;
+    [SerializeField] private float attackDamage;
+    [SerializeField] private float baseDamage = 30f;
     [SerializeField] private LayerMask enemyLayer;
     private bool isAttacking = false;
     public AudioSource playerAudio;
     public AudioClip hitSound;
 
-    public KillCounter killCounter;
+    public DamageMultiplier damageMultiplier;
 
     void Update()
     {
@@ -27,10 +28,18 @@ public class PlayerFight : MonoBehaviour
         if( enemy.GetComponent<EnemyDMG>().CurrentHealth() <= 0 )
         {
             Movement movementScript = GetComponent<Movement>();
+            PlayerFight playerFightScript = GetComponent<PlayerFight>();
+
             if (movementScript != null)
             {
                 movementScript.enabled = false;
             }
+
+            if (playerFightScript != null)
+            {
+                playerFightScript.enabled = false;
+            }
+
         }
 
     }
@@ -59,15 +68,8 @@ public class PlayerFight : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
 
-        if (killCounter.DamageMultiplier() < 0)      // Killed more villagers
-        {
-            attackDamage = attackDamage - (killCounter.DamageMultiplier()) * 3;
-        }
-
-        else      // Killed more Enemies or equally killed villagers and enemies
-        {
-            attackDamage = attackDamage + (killCounter.DamageMultiplier()) * 5;
-        }
+        // The Multiplier 
+        attackDamage = baseDamage + damageMultiplier.Multiplier();
 
 
         // Damage all the Enemies
@@ -75,7 +77,7 @@ public class PlayerFight : MonoBehaviour
         {
             enemy.GetComponent<EnemyDMG>().TakeDamage(attackDamage);
 
-            Debug.Log("AttackDamage is" + attackDamage);
+            Debug.Log("AttackDamage is " + attackDamage);
         }
 
         //play sound when attack done
