@@ -43,7 +43,18 @@ public class SpawnManager : MonoBehaviour
         spawnPos = spawnCoordinates[spawnCoordinatesIndex];
 
         //instantiate based on index of randomly generated index
-        Instantiate(goodVillagerPrefabs[goodVillagerIndex], spawnPos, goodVillagerPrefabs[goodVillagerIndex].transform.rotation);
+        GameObject goodVillager = Instantiate(goodVillagerPrefabs[goodVillagerIndex], spawnPos, goodVillagerPrefabs[goodVillagerIndex].transform.rotation);
+
+        // Check if the scene is DayScene
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "DayScene")
+        {
+            // Disable the HealthBar GameObject for the goodVillager
+            HealthBar healthBar = goodVillager.GetComponentInChildren<HealthBar>();
+            if (healthBar != null)
+            {
+                healthBar.gameObject.SetActive(false);
+            }
+        }
     }
 
     public void SpawnBadVillager()
@@ -53,6 +64,17 @@ public class SpawnManager : MonoBehaviour
         spawnPos = spawnCoordinates[spawnCoordinatesIndex];
 
         //instantiate based on index of randomly generated index
-        Instantiate(badVillagerPrefabs[badVillagerIndex], spawnPos, badVillagerPrefabs[badVillagerIndex].transform.rotation);
+        GameObject badVillager = Instantiate(badVillagerPrefabs[badVillagerIndex], spawnPos, badVillagerPrefabs[badVillagerIndex].transform.rotation);
+
+        // Check if the scene is DayScene
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "DayScene")
+        {
+            // Disable the HealthBar GameObject for the badVillager
+            HealthBar healthBar = badVillager.GetComponentInChildren<HealthBar>();
+            if (healthBar != null)
+            {
+                healthBar.gameObject.SetActive(false);
+            }
+        }
     }
 }
