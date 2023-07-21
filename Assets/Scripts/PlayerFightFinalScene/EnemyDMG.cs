@@ -8,10 +8,13 @@ public class EnemyDMG : MonoBehaviour
     [SerializeField] public float maxHealth = 100f;
     [SerializeField] public float currentHealth;
 
+    public HealthBar healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth((int)maxHealth);
     }
 
     public void TakeDamage(float damage)
@@ -19,6 +22,8 @@ public class EnemyDMG : MonoBehaviour
         currentHealth -= damage;
 
         animator.SetTrigger("Hurt");
+
+        healthBar.SetHealth((int)currentHealth);
 
         if (currentHealth <= 0)
         {

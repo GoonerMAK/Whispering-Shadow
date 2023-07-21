@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Cinemachine.DocumentationSortingAttribute;
+
 public class DamageTaking : MonoBehaviour
 {
     public Animator animator;
@@ -10,11 +12,13 @@ public class DamageTaking : MonoBehaviour
 
     public AudioClip dieSound;
     public AudioSource dieAudio;
+    public HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth((int)maxHealth);
     }
 
     public void TakeDamage(float damage)
@@ -22,6 +26,8 @@ public class DamageTaking : MonoBehaviour
         currentHealth -= damage;
 
         animator.SetTrigger("Hurt");
+
+        healthBar.SetHealth((int)currentHealth);
 
         if (currentHealth <= 0)
         {
