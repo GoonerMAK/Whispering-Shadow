@@ -575,7 +575,7 @@ MonoBehaviour:
   animator: {fileID: 5941512002227638285}
   dieSound: {fileID: 8300000, guid: 84611976e3e0506498f188974a7a71e6, type: 3}
   dieAudio: {fileID: 0}
-  waitForDeath: 5
+  waitForDeath: 1
   healthBar: {fileID: 5182336363916718225}
 --- !u!114 &-9127760764008361956
 MonoBehaviour:

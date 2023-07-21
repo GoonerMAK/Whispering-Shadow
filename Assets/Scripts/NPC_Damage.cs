@@ -9,7 +9,7 @@ public class NPC_Damage : MonoBehaviour
 
     public AudioClip dieSound;
     public AudioSource dieAudio;
-    public float waitForDeath = 5.0f;
+    public float waitForDeath = 1.0f;
     public HealthBar healthBar;
 
     // Defining a delegate for the NPC death event
