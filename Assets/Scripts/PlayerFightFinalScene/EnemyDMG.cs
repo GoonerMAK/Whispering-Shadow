@@ -34,7 +34,7 @@ public class EnemyDMG : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("I died");
+        Debug.Log("Enemy died");
 
         animator.SetBool("IsDead", true);
 

@@ -112870,7 +112870,6 @@ GameObject:
   - component: {fileID: 1231657813}
   - component: {fileID: 1231657812}
   - component: {fileID: 1231657818}
-  - component: {fileID: 1231657819}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -113079,19 +113078,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagersKilled: 0
   enemiesKilled: 0
---- !u!114 &1231657819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231657811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b8d83c4e02da44bb1fba56d42a5c3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 0
 --- !u!1 &1275198104
 GameObject:
   m_ObjectHideFlags: 0

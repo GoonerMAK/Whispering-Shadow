@@ -15,7 +15,7 @@ public class PlayerFight : MonoBehaviour
     public AudioSource playerAudio;
     public AudioClip hitSound;
 
-    public DamageMultiplier damageMultiplier;
+    // public DamageMultiplier damageMultiplier;
 
     void Update()
     {
@@ -67,10 +67,14 @@ public class PlayerFight : MonoBehaviour
         // Detect all the Enemies
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
+        int multiplier = PlayerPrefs.GetInt("DamageMultiplier", 0);
 
-        // The Multiplier 
-        attackDamage = baseDamage + damageMultiplier.Multiplier();
+        attackDamage = baseDamage + multiplier;
 
+        if(attackDamage <= 0)
+        {
+            attackDamage = 5;
+        }
 
         // Damage all the Enemies
         foreach (Collider2D enemy in hitEnemies)

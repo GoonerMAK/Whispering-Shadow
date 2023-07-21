@@ -7,9 +7,19 @@ public class DamageMultiplier : MonoBehaviour
     private int villagersKilled;
     private int enemiesKilled;
     [SerializeField] private int multiplier = 0;
+    public static DamageMultiplier Instance { get; private set; }
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -24,7 +34,6 @@ public class DamageMultiplier : MonoBehaviour
         // Unsubscribe from the NPC death event when the script is disabled
         NPC_Damage.onNpcDeath -= IncrementKillCount;
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +54,9 @@ public class DamageMultiplier : MonoBehaviour
         }
 
         multiplier = enemiesKilled - villagersKilled;
-    }
 
-    public int Multiplier()
-    {
-        return multiplier * 10;
+        PlayerPrefs.SetInt("DamageMultiplier", multiplier * 20);
+
     }
 
 

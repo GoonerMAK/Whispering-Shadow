@@ -5102,14 +5102,13 @@ MonoBehaviour:
   enemy: {fileID: 372465128}
   animator: {fileID: 2096659991}
   attackPoint: {fileID: 1250159711}
-  attackDamage: 40
+  attackDamage: 30
   baseDamage: 30
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   playerAudio: {fileID: 66814750}
   hitSound: {fileID: 8300000, guid: c6d5d4d8966f24a41a320844db7d2bb2, type: 3}
-  damageMultiplier: {fileID: 144336197}
 --- !u!61 &2096659995
 BoxCollider2D:
   m_ObjectHideFlags: 0
