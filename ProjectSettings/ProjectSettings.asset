@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Kopzz
   productName: Whispering Shadow
-  defaultCursor: {fileID: 2800000, guid: 330a6ac2373361349b9dd1002e2fd296, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 42e8ad2288559d046b50b7e0f13f55ff, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
