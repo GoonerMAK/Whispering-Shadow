@@ -10,6 +10,7 @@ public class NPC_Damage : MonoBehaviour
     public AudioClip dieSound;
     public AudioSource dieAudio;
     public float waitForDeath = 5.0f;
+    public HealthBar healthBar;
 
     // Defining a delegate for the NPC death event
     public delegate void NPCDeathEventHandler(string npcTag);
@@ -23,11 +24,14 @@ public class NPC_Damage : MonoBehaviour
     void Start()
     {
         lives = 4;
+        healthBar.SetMaxHealth((int)lives);
         dieAudio = Camera.main.GetComponent<AudioSource>();
     }
     public void TakeDamage(float damage)
     {
         lives--;
+
+        healthBar.SetHealth((int) lives);
 
         if (lives <= 0)
         {
@@ -42,11 +46,18 @@ public class NPC_Damage : MonoBehaviour
 
         animator.SetBool("isDead", true);
         dieAudio.PlayOneShot(dieSound);
+       
 
         // Raising the NPC death event with the NPC's tag
         onNpcDeath?.Invoke(gameObject.tag);
 
         gameObject.tag = "Untagged";
+
+        // Destroy the health bar object when the NPC dies
+        if (healthBar != null)
+        {
+            Destroy(healthBar.gameObject);
+        }
 
         StartCoroutine(SetNPCInactive());
     }
